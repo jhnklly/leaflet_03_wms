@@ -1,0 +1,70 @@
+MAP
+
+
+LAYER
+    NAME "polygons"
+    TYPE polygon
+
+    DATA "/maps/common_data/OSM/queries/us_boundary_np_OR_leisure_park_OR_nature_reserve_OR_protected_area_2014_05.shp"
+    
+    OPACITY 50
+    CLASSITEM "boundary"
+    CLASS
+        EXPRESSION "national_park"
+        STYLE
+            OUTLINECOLOR 140 81 10 # brown
+            COLOR 170 110 50
+            WIDTH 1
+        END
+    END
+    CLASS
+        # No expression, so default for all the others
+        STYLE
+            OUTLINECOLOR "#75865B" # green
+            COLOR "#75bb5B"
+            WIDTH 1
+        END
+    END
+
+    #TEMPLATE "clickquery/polygons.html"
+    TOLERANCE 15
+END
+
+
+#####################################################################################
+#
+# these metadata and global configs, probably aren't anything you need to worry about
+#
+#####################################################################################
+
+SIZE 256 256
+MAXSIZE 4096
+
+WEB 
+    METADATA
+        "wms_title"          "mapcollaborator_datasets"
+        "wms_onlineresource" "http://websites.greeninfo.org/cgi-bin/mapserv?map=/maps/mapcollaborator/template/core.map&"
+        "wms_srs"            "EPSG:3857 EPSG:900913 EPSG:4326"
+        "wms_feature_info_mime_type"    "text/html"
+    END
+END
+
+IMAGETYPE PNG24
+OUTPUTFORMAT
+    NAME png
+    DRIVER AGG/PNG
+    MIMETYPE "image/png"
+    IMAGEMODE RGBA
+    FORMATOPTION "TRANSPARENT=ON"
+    FORMATOPTION "INTERLACE=OFF"
+END
+
+
+PROJECTION
+    "init=epsg:4326"
+END
+
+#SHAPEPATH ./data
+#FONTSET fonts/fonts.txt
+
+END # Map File
